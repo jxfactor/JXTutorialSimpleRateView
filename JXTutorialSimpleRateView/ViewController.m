@@ -14,9 +14,20 @@
 
 @implementation ViewController
 
+- (void)ratingDidChange:(int)rating {
+    [self.statusLbl setText:[NSString stringWithFormat:@"Rating: %d", rating]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.rateView setEditable:YES
+           andNotSelectedImage:[UIImage imageNamed:@"kermit_empty"]
+              andSelectedImage:[UIImage imageNamed:@"kermit_full"]
+                     andRating:0
+                  andMaxRating:5
+                   andDelegate:self];
+    
 }
 
 - (void)didReceiveMemoryWarning {
